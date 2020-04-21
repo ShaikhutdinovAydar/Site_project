@@ -1,0 +1,45 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="container gg" style="margin-bottom: 60px;">
+  <div class="content">
+    <div class="img-block"><img src="../static/img/products-img/{{product.src_of_img}}" alt=""></div>
+    <div class="order-block">
+      <h3 style='margin-bottom: 0; color: #808080;'>Originals</h3>
+      <div class="name"></div>
+      <div class="sex"></div>
+      <h3>Be careful: the tag does not have the size of RU, so not to get confused, check the size of UK.</h3>
+      <h5 style='margin-top: 20px;'>This product is only available in the online store</h5>
+      <form action="" method="post">
+        <div class="size">
+          {{ form.hidden_tag() }}
+          {% if error_message == '' %}
+          {{ form.example }}
+          {% endif %}
+        </div>
+
+        <div class="price_of_item" style="margin-top: 30px; color: #ff4f00;">
+          {% if product['discount'] != None and product['discount'] != '' %}
+          <h1>{{product['discount']}}руб.</h1>
+          <h3
+            style="background-color: #ff4f00; color:#fff;width: 60px;border-radius: 50%;text-align:center;font-size:16px;">
+            {{ ((((product['price_product'] | int) - (product['discount'] | int)) / (product['price_product'] | int)) * 100) | int}}%
+          </h3>
+          {% else %}
+          <h1>{{product['price_product']}}руб.</h1>
+          {% endif %}
+          <h1>{{error_message}}</h1>
+        </div>
+        {% if error_message == '' %}
+        <div class="button-to-order">
+          <button type="submit" class="btn btn-success" style=" background-color: #ff7373; ">Add to basket</button>
+        </div>
+        {% endif %}
+    </div>
+    </form>
+    <div class="description">
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <link rel="icon" href="../static/img/mian_logo_img.png" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>SportsHold</title>
+</head>
+
+<body>
+  <div class="section">
+    <div class="container">
+      <div class="register__form">
+        <div class="img text-center">
+        </div>
+        <div class="register" style="height: 100%;">
+          <img src="../static/img/mian_logo_img.png" alt="">
+          <form action="" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <div class="register__Inputts">
+              <p>
+                {{ form.name(class="form-control", placeholder='Enter your Name') }}<br>
+                {% for error in form.name.errors %}
+                <p class="alert alert-danger" role="alert">
+                  {{ error }}
+                </p>
+                {% endfor %}
+              </p>
+              <p>
+                {{ form.email(class="form-control", type="email", placeholder='Enter your Mail') }}<br>
+                {% for error in form.email.errors %}
+                <p class="alert alert-danger" role="alert">
+                  {{ error }}
+                </p>
+                {% endfor %}
+              </p>
+              <p>
+                {{ form.password(class="form-control", type="password", placeholder='Password') }}<br>
+                {% for error in form.password.errors %}
+                <p class="alert alert-danger" role="alert">
+                  {{ error }}
+                </p>
+                {% endfor %}
+              </p>
+              <p>
+                {{ form.password_again(class="form-control", type="password", placeholder='Repeat password') }}<br>
+                {% for error in form.password_again.errors %}
+                <p class="alert alert-danger" role="alert">
+                  {{ error }}
+                </p>
+                {% endfor %}
+              </p>
+              <p>{{ message }}</p>
+              <button type="submit" name='submit' class="btn btn-default btn-lg">Register</button>
+              <a href="/login">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+
+</html>
